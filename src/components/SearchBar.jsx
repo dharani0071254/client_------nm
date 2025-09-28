@@ -17,6 +17,10 @@ const SearchBar = ({
     onRoleChange("");
   };
 
+  // Sort departments and roles alphabetically
+  const sortedDepartments = [...departments].sort((a, b) => a.localeCompare(b));
+  const sortedRoles = [...roles].sort((a, b) => a.localeCompare(b));
+
   return (
     <div className="search-bar">
       <input
@@ -28,7 +32,7 @@ const SearchBar = ({
 
       <select value={department} onChange={(e) => onDepartmentChange(e.target.value)}>
         <option value="">All Departments</option>
-        {departments.map((d) => (
+        {sortedDepartments.map((d) => (
           <option key={d} value={d}>
             {d}
           </option>
@@ -37,7 +41,7 @@ const SearchBar = ({
 
       <select value={role} onChange={(e) => onRoleChange(e.target.value)}>
         <option value="">All Roles</option>
-        {roles.map((r) => (
+        {sortedRoles.map((r) => (
           <option key={r} value={r}>
             {r.charAt(0).toUpperCase() + r.slice(1)}
           </option>

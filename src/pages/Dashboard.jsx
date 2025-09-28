@@ -46,14 +46,17 @@ const Dashboard = () => {
     fetchEmployees();
   };
 
-  const filteredEmployees = employees.filter((emp) => {
-    const matchesSearch =
-      emp.name.toLowerCase().includes(search.toLowerCase()) ||
-      emp.email.toLowerCase().includes(search.toLowerCase());
-    const matchesDepartment = departmentFilter ? emp.department === departmentFilter : true;
-    const matchesRole = roleFilter ? emp.role === roleFilter : true;
-    return matchesSearch && matchesDepartment && matchesRole;
-  });
+  // Sort employees alphabetically by name, then apply filters
+  const filteredEmployees = [...employees]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .filter((emp) => {
+      const matchesSearch =
+        emp.name.toLowerCase().includes(search.toLowerCase()) ||
+        emp.email.toLowerCase().includes(search.toLowerCase());
+      const matchesDepartment = departmentFilter ? emp.department === departmentFilter : true;
+      const matchesRole = roleFilter ? emp.role === roleFilter : true;
+      return matchesSearch && matchesDepartment && matchesRole;
+    });
 
   return (
     <div className="dashboard-container">
