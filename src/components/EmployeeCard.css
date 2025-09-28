@@ -1,0 +1,129 @@
+/* EmployeeCard.css */
+.employee-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 260px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  min-height: 220px; /* uniform height */
+}
+
+.employee-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.employee-image,
+.employee-initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 16px;
+  background-color: var(--bg-color, #e0e0e0);
+}
+
+.employee-basic {
+  text-align: center;
+}
+
+.employee-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.employee-role,
+.employee-department {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 2px 0;
+}
+
+/* Details panel - slide down */
+.employee-details {
+  max-height: 0;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 0;
+  transition: max-height 0.35s ease, padding-top 0.35s ease;
+}
+
+.employee-card.active .employee-details {
+  max-height: 150px;
+  padding-top: 12px;
+}
+
+.employee-details p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #444;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.employee-card.active .employee-details p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons */
+.employee-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.employee-card.active .employee-buttons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.edit-btn {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #357ab8;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
